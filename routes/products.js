@@ -1,9 +1,12 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const productsController = require('../controllers/productsController');
+const router = express.Router();
 
-/* GET users listing. */
-router.get('/', function (req, res, next) {
-	res.send('Productos :b');
-});
+router
+	.route('/')
+	.get(productsController.getAllProducts)
+	.post(productsController.createNewProduct)
+	.patch(productsController.updateProduct)
+	.delete(productsController.deleteProduct);
 
 module.exports = router;
